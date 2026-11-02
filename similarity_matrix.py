@@ -238,6 +238,26 @@ def write_heatmap(
             ),
         )
     )
+    figure.add_trace(
+        go.Scatter(
+            x=[None],
+            y=[None],
+            mode="markers",
+            marker={"symbol": "square-open", "size": 16, "color": "#111827"},
+            name="Miglior score della domanda",
+            hoverinfo="skip",
+        )
+    )
+    figure.add_trace(
+        go.Scatter(
+            x=[None],
+            y=[None],
+            mode="markers",
+            marker={"symbol": "square-open", "size": 16, "color": "#2563eb"},
+            name="Documento atteso",
+            hoverinfo="skip",
+        )
+    )
     figure.update_layout(
         title={
             "text": (
@@ -250,7 +270,15 @@ def write_heatmap(
         template="plotly_white",
         width=1500,
         height=max(800, len(questions) * 52),
-        margin={"l": 420, "r": 100, "t": 210, "b": 80},
+        margin={"l": 420, "r": 100, "t": 210, "b": 150},
+        legend={
+            "title": {"text": "Legenda"},
+            "orientation": "h",
+            "x": 0.5,
+            "xanchor": "center",
+            "y": -0.12,
+            "yanchor": "top",
+        },
         shapes=shapes,
         xaxis={
             "title": "Documenti",
