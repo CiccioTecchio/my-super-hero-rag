@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  GREETING: Hello, world!
+
+tasks:
+  main:
+    desc: Run the application
+    cmds:
+      - .venv/bin/python __main__.py {{.CLI_ARGS}}
