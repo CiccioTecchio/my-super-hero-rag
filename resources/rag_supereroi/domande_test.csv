@@ -1,0 +1,18 @@
+﻿domanda,documenti_attesi,risposta_di_riferimento
+Quale eroe usa lancia-ragnatele progettati da lui?,marvel/01_spider_man.md,Peter Parker usa lancia-ragnatele meccanici.
+Chi è l’inventore che combatte con un’armatura avanzata?,marvel/02_iron_man.md,Tony Stark / Iron Man.
+Quale eroe è collegato al siero del supersoldato?,marvel/03_capitan_america.md,Steve Rogers / Captain America.
+Che rapporto hanno Thor e Loki?,marvel/04_thor.md,Sono fratelli adottivi nelle narrazioni Marvel.
+Quale eroe governa il Wakanda?,marvel/05_black_panther.md,T’Challa / Black Panther.
+Captain America è uno dei fondatori originari degli Avengers nei fumetti?,marvel/06_avengers.md,No; entra poco dopo la prima formazione.
+Quale eroe combatte il crimine a Gotham City senza superpoteri innati?,dc/01_batman.md,Bruce Wayne / Batman.
+Quale materiale è associato alla debolezza di Superman?,dc/02_superman.md,La kryptonite.
+Quale eroina utilizza il Lazo della Verità?,dc/03_wonder_woman.md,Wonder Woman / Diana.
+Che cos’è la Speed Force?,dc/04_flash.md,Una fonte/dimensione di energia associata ai velocisti DC.
+Come fa Green Lantern a creare oggetti di energia?,dc/05_green_lantern.md,Usa un anello energetico che risponde alla volontà.
+Quali sono tre eroi molto rappresentativi della Justice League?,dc/06_justice_league.md,"Superman, Batman, Wonder Woman."
+Quali differenze ci sono tra Iron Man e Batman?,marvel/02_iron_man.md;dc/01_batman.md,"Entrambi usano tecnologia; differenti identità, origini e universi."
+Come si distinguono Avengers e Justice League?,marvel/06_avengers.md;dc/06_justice_league.md,"Squadre di universi editoriali diversi, Marvel e DC."
+In quali città operano principalmente Batman e Superman?,dc/01_batman.md;dc/02_superman.md,Gotham City e Metropolis.
+Qual è il colore preferito di Batman?,,Non specificato nei documenti: il sistema dovrebbe dichiarare che mancano informazioni.
+Tra Thor e Wonder Woman chi è collegato alla mitologia norrena?,marvel/04_thor.md;dc/03_wonder_woman.md,Thor alla mitologia norrena; Wonder Woman alla greca.
