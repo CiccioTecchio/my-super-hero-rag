@@ -25,3 +25,18 @@ or:
 ```bash
 .venv/bin/python __main__.py "Quali poteri possiede Thor?"
 ```
+
+## Similarity matrix
+
+Generate the cosine-similarity matrix between the questions in
+`resources/rag_supereroi/domande_test.csv` and every document:
+
+```bash
+task similarity-matrix
+```
+
+The command writes two reports in `reports/`:
+
+- `similarity_matrix.csv`, for further analysis;
+- `similarity_matrix.html`, an interactive Plotly heatmap that highlights the
+  best and expected documents for every question.

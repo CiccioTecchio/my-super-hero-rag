@@ -10,3 +10,8 @@ tasks:
     desc: Run the application
     cmds:
       - .venv/bin/python __main__.py {{.CLI_ARGS}}
+
+  similarity-matrix:
+    desc: Generate the question-document similarity matrix
+    cmds:
+      - .venv/bin/python similarity_matrix.py {{.CLI_ARGS}}
