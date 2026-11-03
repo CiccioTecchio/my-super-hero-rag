@@ -1,6 +1,12 @@
 # My Superhero RAG
 
-First example of RAG usage based on [Building RAG Systems: From Zero to Hero](https://dev.to/gautamvhavle/building-production-rag-systems-from-zero-to-hero-2f1i)
+First example of RAG usage based on [Building RAG Systems: From Zero to Hero](https://dev.to/gautamvhavle/building-production-rag-systems-from-zero-to-hero-2f1i).
+
+The main concept is create a simple database of documents that contains info about the superheroes of DC and Marvel and search the information about them using a simple RAG.
+
+## Resources and results
+
+Information about the superheroes is available in the [resources](resources/) directory, while the results are available in [reports](reports/).
 
 ## Initial setup
 
