@@ -13,7 +13,7 @@ Information about the superheroes is available in the [resources](resources/) di
 |                                               Name                                               | Version |
 | :----------------------------------------------------------------------------------------------: | :-----: |
 |                                              Python                                              |  3.13   |
-| [Universal Sentence Endocer](https://tfhub.dev/google/universal-sentence-encoder-multilingual/3) |    2    |
+| [Universal Sentence Encoder](https://tfhub.dev/google/universal-sentence-encoder-multilingual/3) |    2    |
 
 ## Initial setup
 
