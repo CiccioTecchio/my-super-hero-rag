@@ -40,6 +40,36 @@ def create_index(embeddings: np.ndarray) -> faiss.IndexFlatIP:
     return index
 
 
+def embed_documents(embed, documents: list[str]) -> np.ndarray:
+    """Create embeddings for all documents."""
+    return np.ascontiguousarray(embed(documents).numpy(), dtype="float32")
+
+
+def embed_question(embed, question: str) -> np.ndarray:
+    """Create the embedding for a question."""
+    return np.ascontiguousarray(embed([question]).numpy(), dtype="float32")
+
+
+def search_question(
+    index: faiss.IndexFlatIP,
+    question_embedding: np.ndarray,
+    documents: list[str],
+    k: int = 1,
+) -> list[tuple[str, float]]:
+    """Return the documents most similar to a question and their scores."""
+    normalized_embedding = np.ascontiguousarray(
+        question_embedding.copy(), dtype="float32"
+    )
+    faiss.normalize_L2(normalized_embedding)
+
+    scores, indices = index.search(normalized_embedding, k=k)
+    return [
+        (documents[int(document_index)], float(score))
+        for score, document_index in zip(scores[0], indices[0], strict=True)
+        if document_index >= 0
+    ]
+
+
 def main():
     args = parse_args()
     question = " ".join(args.question)
@@ -51,22 +81,17 @@ def main():
     print("Caricamento di Universal Sentence Encoder...")
     embed = hub.load(USE_MODEL_URL)
 
-    document_embeddings = embed(superheroes).numpy()
+    document_embeddings = embed_documents(embed, superheroes)
     index = create_index(document_embeddings)
 
-    question_embedding = np.ascontiguousarray(
-        embed([question]).numpy(), dtype="float32"
-    )
-    faiss.normalize_L2(question_embedding)
-
-    scores, indices = index.search(question_embedding, k=1)
-    best_match = int(indices[0][0])
-    best_score = float(scores[0][0])
+    question_embedding = embed_question(embed, question)
+    results = search_question(index, question_embedding, superheroes)
+    best_document, best_score = results[0]
 
     print(f"\nDomanda: {question}")
     print(f"Similarità: {best_score:.4f}")
     print("\nDocumento più pertinente:\n")
-    print(superheroes[best_match])
+    print(best_document)
 
 
 if __name__ == "__main__":
