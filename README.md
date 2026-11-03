@@ -8,6 +8,13 @@ The main concept is create a simple database of documents that contains info abo
 
 Information about the superheroes is available in the [resources](resources/) directory, while the results are available in [reports](reports/).
 
+## Technologies used
+
+|                                               Name                                               | Version |
+| :----------------------------------------------------------------------------------------------: | :-----: |
+|                                              Python                                              |  3.13   |
+| [Universal Sentence Endocer](https://tfhub.dev/google/universal-sentence-encoder-multilingual/3) |    2    |
+
 ## Initial setup
 
 Setup the venv with:
