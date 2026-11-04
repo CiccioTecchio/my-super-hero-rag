@@ -4,6 +4,8 @@ First example of RAG usage based on [Building RAG Systems: From Zero to Hero](ht
 
 The main concept is create a simple database of documents that contains info about the superheroes of DC and Marvel and search the information about them using a simple RAG.
 
+> **Note:** In this first version, no vector database is used; embeddings are stored in memory.
+
 ## Resources and results
 
 Information about the superheroes is available in the [resources](resources/) directory, while the results are available in [reports](reports/).
