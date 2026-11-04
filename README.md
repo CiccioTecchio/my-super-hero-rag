@@ -10,10 +10,11 @@ Information about the superheroes is available in the [resources](resources/) di
 
 ## Technologies used
 
-|                                               Name                                               | Version |
-| :----------------------------------------------------------------------------------------------: | :-----: |
-|                                              Python                                              |  3.13   |
-| [Universal Sentence Encoder](https://tfhub.dev/google/universal-sentence-encoder-multilingual/3) |    2    |
+|                                               Name                                               |        Version        |
+| :----------------------------------------------------------------------------------------------: | :-------------------: |
+|                                              Python                                              |         3.13          |
+| [Universal Sentence Encoder](https://tfhub.dev/google/universal-sentence-encoder-multilingual/3) |           2           |
+|                                            Gemini AI                                             | gemini-3.5-flash-lite |
 
 ## Initial setup
 
