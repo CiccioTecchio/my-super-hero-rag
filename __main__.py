@@ -1,6 +1,7 @@
-import argparse
 from pathlib import Path
 from google import genai
+from langchain_text_splitters import MarkdownHeaderTextSplitter
+import argparse
 import faiss
 import numpy as np
 import tensorflow_hub as hub
@@ -86,31 +87,51 @@ superpower: string[] //list of the superpower, if is a human list his/her charac
         contents=prompt,
     )
     answer="Question: "+question+"\nAnswer: "+response.text
+    print(prompt)
     return answer
+
+def chunking(document: str) -> list[str]:
+    splitter = MarkdownHeaderTextSplitter(
+        headers_to_split_on=[("#", "title"), ("##", "section")],
+        strip_headers=False,
+    )
+    return [
+        chunk.page_content
+        for chunk in splitter.split_text(document)
+        if "section" in chunk.metadata
+    ]
+
+def get_docs_chunks(documents:list[str]) -> list[str]:
+    return [
+        chunk
+        for document in documents
+        for chunk in chunking(document)
+    ]
 
 def main():
     args = parse_args()
     question = " ".join(args.question)
     superheroes = read_documents(RESOURCES_DIR)
-
     if not superheroes:
         raise RuntimeError(f"Nessun documento trovato in {RESOURCES_DIR}")
-
     print("Caricamento di Universal Sentence Encoder...")
     embed = hub.load(USE_MODEL_URL)
-
-    document_embeddings = embed_documents(embed, superheroes)
+    
+    chunks = get_docs_chunks(superheroes)
+    document_embeddings = embed_documents(embed, chunks)
+    
     index = create_index(document_embeddings)
 
     question_embedding = embed_question(embed, question)
-    results = search_question(index, question_embedding, superheroes)
+    results = search_question(index, question_embedding, chunks)
     best_document, best_score = results[0]
 
     #print(f"\nDomanda: {question}")
     #print(f"Similarità: {best_score:.4f}")
     #print("\nDocumento più pertinente:\n")
-    print(ask_to_LLM(best_document, question))
     #print(best_document)
+    print(ask_to_LLM(best_document, question))
+    
 
 
 if __name__ == "__main__":
