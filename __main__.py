@@ -77,6 +77,7 @@ Question: {question}
 Create a JSON with the following fields:
 name: string //name of the character
 superheroName: string //superhero name
+universe: string //DC o Marvel
 superpower: string[] //list of the superpower, if is a human list his/her characteristics
 """
     client = genai.Client()
