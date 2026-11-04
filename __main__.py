@@ -1,6 +1,6 @@
 import argparse
 from pathlib import Path
-
+from google import genai
 import faiss
 import numpy as np
 import tensorflow_hub as hub
@@ -69,6 +69,23 @@ def search_question(
         if document_index >= 0
     ]
 
+def ask_to_LLM(best_document:str, question:str) -> str:
+    prompt = f"""Answer the question based only on this context:
+Context:
+{best_document}
+Question: {question}
+Create a JSON with the following fields:
+name: string //name of the character
+superheroName: string //superhero name
+superpower: string[] //list of the superpower, if is a human list his/her characteristics
+"""
+    client = genai.Client()
+    response = client.models.generate_content(
+        model="gemini-3.5-flash-lite",
+        contents=prompt,
+    )
+    answer="Question: "+question+"\nAnswer: "+response.text
+    return answer
 
 def main():
     args = parse_args()
@@ -88,10 +105,11 @@ def main():
     results = search_question(index, question_embedding, superheroes)
     best_document, best_score = results[0]
 
-    print(f"\nDomanda: {question}")
-    print(f"Similarità: {best_score:.4f}")
-    print("\nDocumento più pertinente:\n")
-    print(best_document)
+    #print(f"\nDomanda: {question}")
+    #print(f"Similarità: {best_score:.4f}")
+    #print("\nDocumento più pertinente:\n")
+    print(ask_to_LLM(best_document, question))
+    #print(best_document)
 
 
 if __name__ == "__main__":
