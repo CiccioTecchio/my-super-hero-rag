@@ -23,6 +23,8 @@ Setup the venv with:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+# to use Gemini API you must subscribe to Google AI Studio and create your own API key and add it as env var with:
+export GEMINI_API_KEY=<your_api_key>
 ```
 
 ## How to run
